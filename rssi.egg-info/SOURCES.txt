@@ -1,0 +1,7 @@
+README.md
+setup.py
+rssi/__init__.py
+rssi.egg-info/PKG-INFO
+rssi.egg-info/SOURCES.txt
+rssi.egg-info/dependency_links.txt
+rssi.egg-info/top_level.txt
