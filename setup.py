@@ -11,7 +11,7 @@ setuptools.setup(
     description="Easy to use package for RSSI scanning and utilizing RSSI-based self-localization.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://jvillagomez@bitbucket.org/jvillagomez/rssi-module.git",
+    url="https://github.com/jvillagomez/rssi_module",
     packages=setuptools.find_packages(),
     classifiers=(
         "License :: OSI Approved :: MIT License",

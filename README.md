@@ -46,7 +46,7 @@ pip install rssi
 OR
 
 ```
-git clone XXXX
+git clone https://github.com/jvillagomez/rssi_module.git
 ```
 ### Classes
 
