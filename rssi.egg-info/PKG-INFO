@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: rssi
-Version: 1.0.0
+Version: 1.0.2
 Summary: Easy to use package for RSSI scanning and utilizing RSSI-based self-localization.
-Home-page: https://jvillagomez@bitbucket.org/jvillagomez/rssi-module.git
+Home-page: https://github.com/jvillagomez/rssi_module
 Author: Juan Antonio Villlagomez
 Author-email: email@juan-antonio.me
 License: UNKNOWN
@@ -54,7 +54,7 @@ Description: # RSSI Python module
         OR
         
         ```
-        git clone XXXX
+        git clone https://github.com/jvillagomez/rssi_module.git
         ```
         ### Classes
         

@@ -59,10 +59,10 @@ class RSSI_Scan(object):
             scan_command = ['iwlist',self.interface,'scan']
         # Open a subprocess running the scan command.
         scan_process = Popen(scan_command, stdout=PIPE, stderr=PIPE)
-        # Block all execution, until the scanning completes.
-        scan_process.wait()
         # Returns the 'success' and 'error' output.
         (raw_output, raw_error) = scan_process.communicate() 
+        # Block all execution, until the scanning completes.
+        scan_process.wait()
         # Returns all output in a dictionary for easy retrieval.
         return {'output':raw_output,'error':raw_error}
 

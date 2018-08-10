@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="rssi",
-    version="1.0.0",
+    version="1.0.2",
     author="Juan Antonio Villlagomez",
     author_email="email@juan-antonio.me",
     description="Easy to use package for RSSI scanning and utilizing RSSI-based self-localization.",
