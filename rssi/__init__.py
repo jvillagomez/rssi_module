@@ -64,6 +64,8 @@ class RSSI_Scan(object):
         # Block all execution, until the scanning completes.
         scan_process.wait()
         # Returns all output in a dictionary for easy retrieval.
+        # FIXE: TypeError python3
+        raw_output = raw_output.decode('utf-8')
         return {'output':raw_output,'error':raw_error}
 
     # getSSID
