@@ -132,7 +132,13 @@ class RSSI_Scan(object):
     @staticmethod
     def getSignalLevel(raw_cell):
         signal = raw_cell.split('Signal level=')[1]
-        signal = int(signal.split(' ')[0])
+        # Need small fixe when running on pi (Debian): signal is not the same format Signal level=47/100.
+        try:
+            # Ubuntu
+            signal = int(signal.split(' ')[0])
+        except:
+            # Debian
+            signal = int(signal.split('/')[0])
         return signal
 
     # parseCell
