@@ -1,4 +1,19 @@
 # RSSI Python module
+
+NOTE: Support is now active (and will ongoing) for this repo and accompanying PIP package.
+I will be working to fix the issues raised, as well as to implement a few more features listed below. 
+
+Upcoming changes/features
+- [ ] Add support for Python 3. (by 04-12-2020)
+- [ ] Expose some internal functions, exapnding the use cases for this package.  (by 04-14-2020)
+- [ ] Expand documentation to include usage, specific use cases, quick list of features this package provides.  (by 04-14-2020)
+- [ ] Implement a testing strategy for multiple distros and python versions.  (by 04-21-2020)
+- [ ] Add a ROS package for this package. This exists in a separate project I made, but needs updating.  (by 04-21-2020)
+- [ ] Add more exmaples for usage.  (by 04-24-2020)
+
+Feature resquests and recoomendations are welcome!
+
+
 With IoT projects at an all time high, there is a continuous need for positioning and localization systems in places where 
 GPS localiztion is not available. RSSI-based localization offers the ability to find an unknown position using the 
 RSSI (relative received signal strength) of nearby access-points (wifi routers). RSSI-based localiztion algortihms require 'n' number
