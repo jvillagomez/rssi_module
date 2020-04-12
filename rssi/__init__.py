@@ -2,6 +2,7 @@ name = "rssi"
 
 from subprocess import Popen, PIPE # Used to run native OS commads in python wrapped subproccess
 import numpy # Used for matrix operations in localization algorithm
+from sys import version_info # Used to check the Python-interpreter version at runtime
 
 # RSSI_Scan
     # Use:
@@ -300,7 +301,9 @@ class RSSI_Scan(object):
     def getAPinfo(self, networks=False, sudo=False):
         # TODO implement error callback if error is raise in subprocess
         # Unparsed access-point listing. AccessPoints are strings.
-        raw_scan_output = self.getRawNetworkScan(sudo)['output'] 
+        raw_scan_output = self.getRawNetworkScan(sudo)['output']
+        if version_info.major == 3:
+            raw_scan_output = raw_scan_output.decode('utf-8')
         # Parsed access-point listing. Access-points are dictionaries.
         all_access_points = self.formatCells(raw_scan_output)
         # Checks if access-points were found.

@@ -4,7 +4,7 @@ NOTE: Support is now active (and will ongoing) for this repo and accompanying PI
 I will be working to fix the issues raised, as well as to implement a few more features listed below. 
 
 Upcoming changes/features
-- [ ] Add support for Python 3. (by 04-12-2020)
+- [X] Add support for Python 3. (by 04-12-2020)
 - [ ] Expose some internal functions, exapnding the use cases for this package.  (by 04-14-2020)
 - [ ] Expand documentation to include usage, specific use cases, quick list of features this package provides.  (by 04-14-2020)
 - [ ] Implement a testing strategy for multiple distros and python versions.  (by 04-21-2020)
