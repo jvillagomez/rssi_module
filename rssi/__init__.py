@@ -134,6 +134,29 @@ class RSSI_Scan(object):
         signal = int(signal.split(' ')[0])
         return signal
 
+    # getMacAddress
+        # Description:
+            # Method returns the MAC address of the AP
+        # -----------------------------------------------
+        #   Input: (Raw string)
+            # 01 - Address: A0:3D:6F:26:77:8E
+            # Channel:144
+            # Frequency:5.72 GHz
+            # Quality=43/70  Signal level=-67 dBm  
+            # Encryption key:on
+            # ESSID:"ucrwpa"
+            # Bit Rates:24 Mb/s; 36 Mb/s; 48 Mb/s; 54 Mb/s
+            # Mode:Master
+        # -----------------------------------------------
+        # Returns: (string)
+            #   'A0:3D:6F:26:77:8E'
+    @staticmethod
+    def getMacAddress(raw_cell):
+        mac = raw_cell.split('Address: ')[1]
+        mac = mac.splot(' ')[0]
+        mac = mac[0:len(mac)-1]
+        return mac
+
     # parseCell
         # Description:
             # Takes a raw cell string and parses it into a dictionary.
@@ -159,6 +182,7 @@ class RSSI_Scan(object):
             'ssid': self.getSSID(raw_cell),
             'quality': self.getQuality(raw_cell),
             'signal': self.getSignalLevel(raw_cell)
+            'MAC': self.getMacAddress(raw_cell)
         }
         return cell
 
@@ -318,6 +342,7 @@ class RSSI_Scan(object):
         else:
             # No access-points were found. 
             return False
+
 
 # RSSI_Localizer
     # Use:
