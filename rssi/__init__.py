@@ -343,7 +343,6 @@ class RSSI_Scan(object):
             # No access-points were found. 
             return False
 
-
 # RSSI_Localizer
     # Use:
         # from rssi import RSSI_Localizer
