@@ -153,7 +153,7 @@ class RSSI_Scan(object):
     @staticmethod
     def getMacAddress(raw_cell):
         mac = raw_cell.split('Address: ')[1]
-        mac = mac.splot(' ')[0]
+        mac = mac.split(' ')[0]
         mac = mac[0:len(mac)-1]
         return mac
 
