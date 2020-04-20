@@ -154,7 +154,7 @@ class RSSI_Scan(object):
     def getMacAddress(raw_cell):
         mac = raw_cell.split('Address: ')[1]
         mac = mac.split(' ')[0]
-        mac = mac[0:len(mac)-1]
+        mac = mac.strip()
         return mac
 
     # parseCell
