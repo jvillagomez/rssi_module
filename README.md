@@ -48,6 +48,12 @@ A Python interpreter will be neccesary to run this module. Package is compatible
 
 The NumPy library will need to be installed, before using this package. We will be updating this package to include the NumPy dependency. See 'Built With' section for installation of NumPy.
 
+#### Fixe python3 error - 2020/02/13 (benbenIo)
+```shell
+raw_cells = raw_cell_string.split('Cell') # Divide raw string into raw cells.
+TypeError: a bytes-like object is required, not 'str'
+```
+
 ### Installing
 
 The RSSI package can be installed via PIP or by cloning this GitHub repo. Future releases will include a package installer for Linux.
@@ -62,6 +68,8 @@ OR
 
 ```
 git clone https://github.com/jvillagomez/rssi_module.git
+cd rssi_module
+pip install .
 ```
 ### Classes
 
