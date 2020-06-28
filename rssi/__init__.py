@@ -181,7 +181,7 @@ class RSSI_Scan(object):
         cell = {
             'ssid': self.getSSID(raw_cell),
             'quality': self.getQuality(raw_cell),
-            'signal': self.getSignalLevel(raw_cell)
+            'signal': self.getSignalLevel(raw_cell),
             'mac': self.getMacAddress(raw_cell)
         }
         return cell
