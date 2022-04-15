@@ -2,7 +2,6 @@ name = "rssi"
 
 from subprocess import Popen, PIPE # Used to run native OS commads in python wrapped subproccess
 import numpy # Used for matrix operations in localization algorithm
-from sys import version_info # Used to check the Python-interpreter version at runtime
 
 # RSSI_Scan
     # Use:
@@ -85,8 +84,8 @@ class RSSI_Scan(object):
             # 'ucrwpa'
     @staticmethod
     def getSSID(raw_cell):
-        ssid = raw_cell.split('ESSID:"')[1]
-        ssid = ssid.split('"')[0]
+        ssid = raw_cell.split('ESSID:"'.encode())[1]
+        ssid = ssid.split('"'.encode())[0]
         return ssid
 
     # getQuality
@@ -107,8 +106,8 @@ class RSSI_Scan(object):
             # '43/70'
     @staticmethod
     def getQuality(raw_cell):
-        quality = raw_cell.split('Quality=')[1]
-        quality = quality.split(' ')[0]
+        quality = raw_cell.split('Quality='.encode())[1]
+        quality = quality.split(' '.encode())[0]
         return quality
 
     # getSignalLevel
@@ -130,15 +129,15 @@ class RSSI_Scan(object):
             # '-67'    
     @staticmethod
     def getSignalLevel(raw_cell):
-        signal = raw_cell.split('Signal level=')[1]
-        signal = int(signal.split(' ')[0])
+        signal = raw_cell.split('Signal level='.encode())[1]
+        signal = int(signal.split(' '.encode())[0])
         return signal
 
-    # getMacAddress
+    # getAddress
         # Description:
-            # Method returns the MAC address of the AP
+            # Parses 'Address' for a given cell.
         # -----------------------------------------------
-        #   Input: (Raw string)
+        # Input: (Raw string)
             # 01 - Address: A0:3D:6F:26:77:8E
             # Channel:144
             # Frequency:5.72 GHz
@@ -149,13 +148,12 @@ class RSSI_Scan(object):
             # Mode:Master
         # -----------------------------------------------
         # Returns: (string)
-            #   'A0:3D:6F:26:77:8E'
+            # 'E4:5D:24:54:75:47'    
     @staticmethod
-    def getMacAddress(raw_cell):
-        mac = raw_cell.split('Address: ')[1]
-        mac = mac.split(' ')[0]
-        mac = mac.strip()
-        return mac
+    def getAddress(raw_cell):
+        address = raw_cell.split('Address: '.encode())[1]
+        address = address.split('\n'.encode())[0]
+        return address
 
     # parseCell
         # Description:
@@ -181,8 +179,8 @@ class RSSI_Scan(object):
         cell = {
             'ssid': self.getSSID(raw_cell),
             'quality': self.getQuality(raw_cell),
-            'signal': self.getSignalLevel(raw_cell)
-            'mac': self.getMacAddress(raw_cell)
+            'signal': self.getSignalLevel(raw_cell),
+            'address': self.getAddress(raw_cell)
         }
         return cell
 
@@ -225,7 +223,7 @@ class RSSI_Scan(object):
             #     }
             # ]    
     def formatCells(self, raw_cell_string):
-        raw_cells = raw_cell_string.split('Cell') # Divide raw string into raw cells.
+        raw_cells = raw_cell_string.split('Cell'.encode()) # Divide raw string into raw cells.
         raw_cells.pop(0) # Remove unneccesary "Scan Completed" message.
         if(len(raw_cells) > 0): # Continue execution, if atleast one network is detected.
             # Iterate through raw cells for parsing.
@@ -325,9 +323,7 @@ class RSSI_Scan(object):
     def getAPinfo(self, networks=False, sudo=False):
         # TODO implement error callback if error is raise in subprocess
         # Unparsed access-point listing. AccessPoints are strings.
-        raw_scan_output = self.getRawNetworkScan(sudo)['output']
-        if version_info.major == 3:
-            raw_scan_output = raw_scan_output.decode('utf-8')
+        raw_scan_output = self.getRawNetworkScan(sudo)['output'] 
         # Parsed access-point listing. Access-points are dictionaries.
         all_access_points = self.formatCells(raw_scan_output)
         # Checks if access-points were found.
