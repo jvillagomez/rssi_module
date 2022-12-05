@@ -62,6 +62,7 @@ class RSSI_Scan(object):
         scan_process = Popen(scan_command, stdout=PIPE, stderr=PIPE)
         # Returns the 'success' and 'error' output.
         (raw_output, raw_error) = scan_process.communicate() 
+        raw_output = raw_output.decode("utf-8")
         # Block all execution, until the scanning completes.
         scan_process.wait()
         # Returns all output in a dictionary for easy retrieval.
